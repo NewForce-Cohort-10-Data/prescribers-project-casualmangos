@@ -99,7 +99,7 @@ SELECT
         WHEN d.antibiotic_drug_flag = 'Y' THEN 'antibiotic'
         ELSE 'neither'
     END AS drug_type,
-    TO_CHAR(SUM(p.total_drug_cost), 'FM$999,999,999.00') AS total_cost
+    SUM(p.total_drug_cost) AS total_cost
 FROM drug d
 JOIN prescription p ON d.drug_name = p.drug_name
 GROUP BY drug_type
